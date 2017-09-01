@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Aleksandr Romanov",
+      "authorEmail": "aleksandr.romanov@kelnik.ru",
+      "authorUrl": ""
+    }
+  }
+}
