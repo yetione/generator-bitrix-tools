@@ -1,4 +1,4 @@
-# generator-bitrix-tools [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-bitrix-tools [![NPM version][npm-image]][npm-url]
 > Генератор для элементов 1с битрикс
 
 ## Установка
