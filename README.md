@@ -1,36 +1,69 @@
-# generator-bitrix [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Bitrix complex generator
+# generator-bitrix-tools [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+> Генератор для элементов 1с битрикс
 
-## Installation
+## Установка
 
-First, install [Yeoman](http://yeoman.io) and generator-bitrix using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+Установите [Yeoman](http://yeoman.io) и generator-bitrix-tools с помощью [npm](https://www.npmjs.com/) (надеюсь, у Вас уже установлен [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
-npm install -g generator-bitrix
+npm install -g generator-bitrix-tools
 ```
 
-Then generate your new project:
+Затем создайте проект:
 
 ```bash
-yo bitrix
+yo bitrix-tools
+```
+## Описание
+Данный генератор позволяет создавать каркасы модулей, сущностей, компонентов. 
+Все генераторы должны запускаться в той папке, в которой необходимо создать тот или иной элемент.
+
+
+### bitrix-tools:module
+Генератор для создания каркаса модуля.
+
+Рекомендуемый каталог запуска:
+```bash
+<project_root>/local/modules
+<project_root>/bitrix/modules
 ```
 
-## Getting To Know Yeoman
+### bitrix-tool:entity
+Генератор для создания каркаса сущности.
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+Рекомендуемый каталог запуска:
+```bash
+<project_root>/local/modules/<module_id>/lib
+<project_root>/bitrix/modules/<module_id>/lib
+```
 
-## License
+### bitrix-tools:component
+Генератор для создания каркаса компонента.
+
+Поддерживает создания компонента с использованием имени вендора.
+```bash
+<vendor_name>:<component_name>
+yo bitrix-tools:component bitrix:news.list
+```
+Создаст компонент в **bitrix/news.list** относительно каталога запуска.
+
+Рекомендуемый каталог запуска:
+```bash
+<project_root>/local/components
+<project_root>/bitrix/components
+```
+
+
+
+## Лицензия
 
 MIT © [Aleksandr Romanov]()
 
 
-[npm-image]: https://badge.fury.io/js/generator-bitrix.svg
-[npm-url]: https://npmjs.org/package/generator-bitrix
-[travis-image]: https://travis-ci.org//generator-bitrix.svg?branch=master
-[travis-url]: https://travis-ci.org//generator-bitrix
-[daviddm-image]: https://david-dm.org//generator-bitrix.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org//generator-bitrix
+[npm-image]: https://badge.fury.io/js/generator-bitrix-tools.svg
+[npm-url]: https://npmjs.org/package/generator-bitrix-tools
+[travis-image]: https://travis-ci.org//generator-bitrix-tools.svg?branch=master
+[travis-url]: https://travis-ci.org//generator-bitrix-tools
+[daviddm-image]: https://david-dm.org//generator-bitrix-tools.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org//generator-bitrix-tools
