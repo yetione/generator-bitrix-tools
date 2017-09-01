@@ -2,7 +2,6 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const merge = require('merge');
 const _ = require('lodash');
 
 module.exports = class extends Generator {
