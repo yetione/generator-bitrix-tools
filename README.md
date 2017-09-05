@@ -5,6 +5,8 @@
 
 Установите [Yeoman](http://yeoman.io) и generator-bitrix-tools с помощью [npm](https://www.npmjs.com/) (надеюсь, у Вас уже установлен [node.js](https://nodejs.org/)).
 
+
+
 ```bash
 npm install -g yo
 npm install -g generator-bitrix-tools
@@ -18,6 +20,8 @@ yo bitrix-tools
 ## Описание
 Данный генератор позволяет создавать каркасы модулей, сущностей, компонентов. 
 Все генераторы должны запускаться в той папке, в которой необходимо создать тот или иной элемент.
+
+[![см. пример](http://img.youtube.com/vi/8BkujWjqfuc/0.jpg)](http://www.youtube.com/watch?v=8BkujWjqfuc)
 
 
 ### bitrix-tools:module
