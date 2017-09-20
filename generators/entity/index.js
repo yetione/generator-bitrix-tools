@@ -7,10 +7,10 @@ const _ = require('lodash');
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-    this.option('ns', {type: String, description: 'namespace of entity', required: false, alias: 'n'});
+    this.option('ns', {type: String, description: 'namespace of entity', required: false, alias: 'n', default:''});
     this.option('cwd', {type: String, description: 'directory where create entities', required: false, default: ''});
     this.option('showGreeting', {type: Boolean, description: 'show greeting', required: false, default: true, hide: true});
-    this.option('entity', {type: String, description: 'comma separated list of entities', required: false, optional: true, hide: true});
+    this.option('entity', {type: String, description: 'comma separated list of entities', required: false, optional: true, hide: true, default:''});
     this.option('showNs', {type: String, description: 'show namespace question', required: false, optional: true, hide: true, default: true});
     this.option('showEntities', {type: String, description: 'show entities question', required: false, optional: true, hide: true, default: true});
 
