@@ -8,7 +8,7 @@ const _ = require('lodash');
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-      this.option('showGreeting', {type: Boolean, description: 'show greeting', required: false, default: true, hide: true});
+    this.option('showGreeting', {type: Boolean, description: 'show greeting', required: false, default: true, hide: true});
     this.argument('modulename', {type: String, description: 'Name of your bitrix module', required: false, optional: true});
     this.langFiles = [];
     this.moduleNameRegExp = /^([a-z][a-z0-9]+)(\.[a-z][a-z0-9]*)?$/;
@@ -17,11 +17,11 @@ module.exports = class extends Generator {
 
   prompting() {
         // Have Yeoman greet the user.
-      if (this.options.showGreeting){
-          this.log(yosay(
+    if (this.options.showGreeting) {
+      this.log(yosay(
               'Welcome to the stellar ' + chalk.red('generator-bitrix-module') + ' generator!'
           ));
-      }
+    }
 
     let date = new Date();
     let self = this;
@@ -46,6 +46,12 @@ module.exports = class extends Generator {
       message: 'Module date (YYYY-MM-DD):',
       default: dateFormat(date, 'yyyy-mm-dd')
     }, {
+      type: 'input',
+      name: 'moduleRequire',
+      message: 'Module dependencies (comma separated):',
+      default: ''
+    },
+    {
       type: 'input',
       name: 'moduleNamespace',
       message: 'Module base namespace',
@@ -95,7 +101,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.composeWith(require.resolve('../entity'), {ns: this.props.moduleNamespace, cwd: this.destinationPath('lib'), showGreeting: false, entity: this.props.entities, showNs:false, showEntities: false});
+    this.composeWith(require.resolve('../entity'), {ns: this.props.moduleNamespace, cwd: this.destinationPath('lib'), showGreeting: false, entity: this.props.entities, showNs: false, showEntities: false});
     let components = this.props.components.trim() === '' ? [] : this.props.components.split(',');
     for (let i = 0; i < components.length; ++i) {
       this.composeWith(require.resolve('../component'), {cwd: this.destinationPath('install/components'), showGreeting: false, componentname: components[i]});
@@ -122,6 +128,24 @@ module.exports = class extends Generator {
             {moduleName: this.props.moduleName, installClass: this.props.moduleName.toLowerCase().replace(/\./g, '_')}
         );
     this.langFiles.push('install/index.php');
+
+    this.props.moduleRequire = this.props.moduleRequire.split(',').map(item => {
+      return '\'' + item.trim() + '\'';
+    }).join(',');
+    if (this.props.moduleRequire == '\'\''){
+        this.props.moduleRequire = '';
+    }
+    this.fs.copyTpl(
+          this.templatePath('install/require.php'),
+          this.destinationPath('install/require.php'),
+          {modules: this.props.moduleRequire}
+      );
+
+    this.fs.copy(
+          this.templatePath('install/install/modules_not_installed.php'),
+          this.destinationPath('install/install/modules_not_installed.php'),
+      );
+
     this.fs.copyTpl(
             this.templatePath('install/version.php'),
             this.destinationPath('install/version.php'),
@@ -134,7 +158,7 @@ module.exports = class extends Generator {
         );
     for (let i = 0; i < this.props.languages.length; ++i) {
       this._createLangFiles(this.props.languages[i]);
-      //this.log('Language ' + this.props.languages[i] + ' created');
+      // This.log('Language ' + this.props.languages[i] + ' created');
     }
 
         /* Not need
