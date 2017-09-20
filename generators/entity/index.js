@@ -11,8 +11,8 @@ module.exports = class extends Generator {
     this.option('cwd', {type: String, description: 'directory where create entities', required: false, default: ''});
     this.option('showGreeting', {type: Boolean, description: 'show greeting', required: false, default: true, hide: true});
     this.option('entity', {type: String, description: 'comma separated list of entities', required: false, optional: true, hide: true, default: ''});
-    this.option('showNs', {type: String, description: 'show namespace question', required: false, optional: true, hide: true, default: true});
-    this.option('showEntities', {type: String, description: 'show entities question', required: false, optional: true, hide: true, default: true});
+    this.option('showNs', {type: Boolean, description: 'show namespace question', required: false, optional: true, hide: true, default: true});
+    this.option('showEntities', {type: Boolean, description: 'show entities question', required: false, optional: true, hide: true, default: true});
 
     this.argument('entity', {type: String, description: 'comma separated list of entities', required: false, optional: true});
 
@@ -51,7 +51,7 @@ module.exports = class extends Generator {
       message: 'Base namespace of entities: ',
       default: this.options.ns,
       when: function (answers) {
-        return self.options.ns && self.options.showNs;
+        return self.options.ns == '' || self.options.showNs;
       }
     });
 
