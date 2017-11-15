@@ -61,7 +61,8 @@ module.exports = class extends Generator {
         this.props.entity = this.props.entity.split(',').map(item => {
           return {
             fileName: item.trim().toLowerCase(),
-            className: item.trim()
+            className: item.trim(),
+            adminHelperNs: 'Kelnik'
           };
         });
 
@@ -71,6 +72,13 @@ module.exports = class extends Generator {
             type: 'confirm',
             name: this.props.entity[i].className,
             message: 'Create interface for entity ' + this.props.entity[i].className
+          });
+
+          askInterfaces.push({
+            type: 'input',
+            name: this.props.entity[i].adminHelperNs,
+            default: this.props.entity[i].adminHelperNs,
+            message: 'Base admin helper namespace ' + this.props.entity[i].className
           });
         }
         return this.prompt(askInterfaces).then(interfaces => {
@@ -101,7 +109,8 @@ module.exports = class extends Generator {
         tplParams = {
           namespace: this.props.namespace + '\\' + model.className + '\\AdminInterface',
           interfaceName: model.className,
-          modelClass: this.props.namespace + '\\' + model.className + '\\' + model.className + 'Table'
+          modelClass: this.props.namespace + '\\' + model.className + '\\' + model.className + 'Table',
+          adminHelperNs: model.adminHelperNs
         };
         this.fs.copyTpl(
                 this.templatePath('admininterface/admininterface.php'),

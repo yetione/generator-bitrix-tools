@@ -1,7 +1,7 @@
 <?php
 namespace <%= namespace %>;
 
-use DigitalWand\AdminHelper\Helper\AdminListHelper;
+use <%= adminHelperNs %>\AdminHelper\Helper\AdminListHelper;
 
 class <%= interfaceName %>ListHelper extends AdminListHelper
 {

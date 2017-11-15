@@ -3,13 +3,13 @@
 namespace <%= namespace %>;
 
 use Bitrix\Main\Localization\Loc,
-    DigitalWand\AdminHelper\Helper\AdminInterface,
-    DigitalWand\AdminHelper\Widget\NumberWidget,
-    DigitalWand\AdminHelper\Widget\StringWidget,
-    DigitalWand\AdminHelper\Widget\CheckboxWidget,
-    DigitalWand\AdminHelper\Widget\FileWidget,
-    DigitalWand\AdminHelper\Widget\VisualEditorWidget,
-    DigitalWand\AdminHelper\Widget\TextAreaWidget;
+    <%= adminHelperNs %>\AdminHelper\Helper\AdminInterface,
+    <%= adminHelperNs %>\AdminHelper\Widget\NumberWidget,
+    <%= adminHelperNs %>\AdminHelper\Widget\StringWidget,
+    <%= adminHelperNs %>\AdminHelper\Widget\CheckboxWidget,
+    <%= adminHelperNs %>\AdminHelper\Widget\FileWidget,
+    <%= adminHelperNs %>\AdminHelper\Widget\VisualEditorWidget,
+    <%= adminHelperNs %>\AdminHelper\Widget\TextAreaWidget;
 
 
 Loc::loadMessages(__FILE__);

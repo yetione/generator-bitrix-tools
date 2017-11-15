@@ -1,7 +1,7 @@
 <?php
 namespace <%= namespace %>;
 
-use DigitalWand\AdminHelper\Helper\AdminEditHelper;
+use <%= adminHelperNs %>\AdminHelper\Helper\AdminEditHelper;
 
 class <%= interfaceName %>EditHelper extends AdminEditHelper
 {
