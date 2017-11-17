@@ -38,13 +38,37 @@ class <%= installClass %> extends CModule
 
     public function DoUninstall()
     {
+        global $USER, $DB, $APPLICATION, $step;
+        $step = (int)$step;
+
+        if (!$USER->IsAdmin()) {
+            return;
+        }
+
+        if ($step < 2) {
+            $APPLICATION->IncludeAdminFile(
+                GetMessage('ESTATE_UNINSTALL_TITLE'),
+                $this->installPath . '/uninstall/step1.php'
+            );
+
+            return;
+        }
+
         Loader::includeModule($this->MODULE_ID);
-
-
-
+        $this->UnInstallDB([
+            "delete_tables" => $_REQUEST["delete_tables"],
+        ]);
         $this->unInstallFiles();
 
         ModuleManager::unRegisterModule($this->MODULE_ID);
+    }
+
+    public function UnInstallDB($arParams = [])
+    {
+        if ($arParams['delete_tables'] == 'Y') {
+            $connection = Application::getConnection();
+            //$connection->dropTable();
+        }
     }
 
     public function installFiles()
