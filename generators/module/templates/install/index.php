@@ -109,4 +109,12 @@ class <%= installClass %> extends CModule
         include($_SERVER["DOCUMENT_ROOT"].BX_ROOT."/modules/main/include/epilog_admin.php");
         die();
     }
+
+    /**
+     * @return \Bitrix\Main\DB\Connection
+     */
+    protected function _getConnection()
+    {
+        return Application::getConnection();
+    }
 }
