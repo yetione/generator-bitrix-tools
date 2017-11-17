@@ -1,6 +1,6 @@
 {
   "name": "generator-bitrix-tools",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Generator for 1c-bitrix elements",
   "homepage": "https://github.com/yetione/generator-bitrix-tools",
   "author": {
