@@ -129,11 +129,18 @@ module.exports = class extends Generator {
         );
     this.langFiles.push('install/index.php');
 
+    this.fs.copyTpl(
+          this.templatePath('uninstall/step1.php'),
+          this.destinationPath('uninstall/step1.php'),
+          {moduleName: this.props.moduleName, installClass: this.props.moduleName.toLowerCase().replace(/\./g, '_')}
+      );
+    this.langFiles.push('uninstall/step1.php');
+
     this.props.moduleRequire = this.props.moduleRequire.split(',').map(item => {
       return '\'' + item.trim() + '\'';
     }).join(',');
-    if (this.props.moduleRequire == '\'\''){
-        this.props.moduleRequire = '';
+    if (this.props.moduleRequire == '\'\'') {
+      this.props.moduleRequire = '';
     }
     this.fs.copyTpl(
           this.templatePath('install/require.php'),

@@ -38,8 +38,9 @@ class <%= installClass %> extends CModule
 
     public function DoUninstall()
     {
-        global $USER, $DB, $APPLICATION, $step;
+        global $USER, $DB, $APPLICATION, $step, $module_id;
         $step = (int)$step;
+        $module_id = $this->MODULE_ID;
 
         if (!$USER->IsAdmin()) {
             return;

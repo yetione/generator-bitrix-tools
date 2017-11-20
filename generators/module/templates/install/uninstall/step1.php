@@ -1,7 +1,7 @@
 <form action="<?echo $APPLICATION->GetCurPage();?>">
     <?echo bitrix_sessid_post(); ?>
     <input type="hidden" name="lang" value="<?echo LANGUAGE_ID ?>">
-    <input type="hidden" name="id" value="kelnik.tools">
+    <input type="hidden" name="id" value="<?= $module_id;?>">
     <input type="hidden" name="uninstall" value="Y">
     <input type="hidden" name="step" value="2">
     <?echo CAdminMessage::ShowMessage(GetMessage("MOD_UNINST_WARN")); ?>
