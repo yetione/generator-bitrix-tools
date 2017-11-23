@@ -150,7 +150,7 @@ module.exports = class extends Generator {
 
     this.fs.copy(
           this.templatePath('install/install/modules_not_installed.php'),
-          this.destinationPath('install/install/modules_not_installed.php'),
+          this.destinationPath('install/install/modules_not_installed.php')
       );
 
     this.fs.copyTpl(
